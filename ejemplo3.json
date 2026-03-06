@@ -1,0 +1,18 @@
+{
+  "universidad":"UAM",
+  "departamento":"Computacion",
+  "curso":{
+      "nombre":"Teoria de la Computacion",
+      "clave":"TC101",
+      "creditos":10
+  },
+  "profesor":{
+      "nombre":"Jose Luis Quiroz",
+      "cubiculo":"T-321"
+  },
+  "alumno":{
+      "nombre":"Ana Perez",
+      "matricula":20234567,
+      "edad":22
+  }
+}
