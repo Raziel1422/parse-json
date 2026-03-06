@@ -105,13 +105,13 @@ def analizar_par():
 
 def analizar_valor():
     """
-    Analiza un valor simple.
+    Analiza un valor simple u objeto anidado.
 
     Gramática implementada:
-        VALOR -> CADENA | NUMERO
+        VALOR -> CADENA | NUMERO | OBJETO
 
     Raises:
-        Exception: Si el valor no es una cadena ni un número.
+        Exception: Si el valor no es una cadena, número ni objeto.
     """
     actual = token_actual()
     if actual is None:
@@ -121,6 +121,8 @@ def analizar_valor():
         consumir("CADENA")
     elif tipo == "NUMERO":
         consumir("NUMERO")
+    elif tipo == "LLAVE_IZQ":
+        analizar_objeto()
     else:
         raise Exception("Valor no valido: " + valor)
 
@@ -128,13 +130,13 @@ def analizar_valor():
 def analizar_json(lista_tokens):
     """
     Analiza una lista completa de tokens para verificar si forman un JSON válido
-    según la gramática del ejercicio 1.
+    según la gramática del ejercicio 2.
 
     La gramática es:
         OBJETO -> { PARES }
         PARES  -> PAR | PAR , PARES
         PAR    -> CADENA : VALOR
-        VALOR  -> CADENA | NUMERO
+        VALOR  -> CADENA | NUMERO | OBJETO
 
     Args:
         lista_tokens (list): Lista de tokens producidos por el lexer.
